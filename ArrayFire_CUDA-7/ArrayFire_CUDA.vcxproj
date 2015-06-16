@@ -71,7 +71,7 @@ copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
       <Include>$(AF_PATH)\include;</Include>
-      <Defines>NOMINMAX;ASSETS_DIR="../../assets";AF_CUDA;AF_DEBUG</Defines>
+      <Defines>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CUDA;AF_DEBUG</Defines>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -100,7 +100,7 @@ copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
       <Include>$(AF_PATH)\include;</Include>
-      <Defines>NOMINMAX;ASSETS_DIR="../../assets";AF_CUDA;AF_DEBUG</Defines>
+      <Defines>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CUDA;AF_DEBUG</Defines>
     </CudaCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
