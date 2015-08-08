@@ -1,13 +1,44 @@
 CMAKE_MINIMUM_REQUIRED(VERSION 2.8)
 project(project_name)
 
+# Find the ArrayFire package.
 FIND_PACKAGE(ArrayFire REQUIRED)
+# If ArrayFire is found, the following variables will be defined:
+#
+# ArrayFire_INCLUDE_DIRS    - Location of ArrayFire's include directory.
+# ArrayFire_LIBRARIES       - Location of ArrayFire's libraries. This will default
+#                             to a GPU backend if one is found.
+# ArrayFire_FOUND           - True if ArrayFire has been located
+#
+# You may provide a hint to where ArrayFire's root directory may be located
+# by setting ArrayFire_DIR.
+#
+# ----------------------------------------------------------------------------
+#
+# ArrayFire_CPU_FOUND        - True of the ArrayFire CPU library has been found.
+# ArrayFire_CPU_LIBRARIES    - Location of ArrayFire's CPU library, if found
+# ArrayFire_CUDA_FOUND       - True of the ArrayFire CUDA library has been found.
+# ArrayFire_CUDA_LIBRARIES   - Location of ArrayFire's CUDA library, if found
+# ArrayFire_OpenCL_FOUND     - True of the ArrayFire OpenCL library has been found.
+# ArrayFire_OpenCL_LIBRARIES - Location of ArrayFire's OpenCL library, if found
+
+# Include the ArrayFire hreaders
 INCLUDE_DIRECTORIES(${ArrayFire_INCLUDE_DIRS})
 
+# Get a list of all of the source files in the directory:
 FILE(GLOB SOURCE "*.cpp")
+
+# There are several ways of compiling source code in CMake. In most cases you
+# specify the source files to an ADD_EXCUTABLE call. Because we intend to
+# link against multiple ArrayFire backends, this approach would result in
+# every source file being re-compiled multiple times.
+# Here we take a different approach to compilation. We build all of the source
+# files into a CMake object library and then link this library against the
+# different ArrayFire backends.
 ADD_LIBRARY(FOO_CORE OBJECT ${SOURCE})
 
-# Build benchmarks linking specifically with designated backends
+# Build the program, linking specifically with designated backends
+# ArrayFire CPU backend
 if(${ArrayFire_CPU_FOUND})
     MESSAGE(STATUS "ArrayFire CPU backend found. Enabling CPU benchmark")
     ADD_EXECUTABLE(foo-cpu $<TARGET_OBJECTS:FOO_CORE>)
@@ -15,7 +46,9 @@ if(${ArrayFire_CPU_FOUND})
         ${CMAKE_THREAD_LIBS_INIT})
 ENDIF()
 
+# ArrayFire OpenCL backend
 if(${ArrayFire_OpenCL_FOUND})
+    # We need to find OpenCL as transitive linking is disabled on some OSes
     FIND_PACKAGE(OpenCL REQUIRED)
     MESSAGE(STATUS "ArrayFire OpenCL backend found. Enabling OpenCL benchmark")
     ADD_EXECUTABLE(foo-opencl $<TARGET_OBJECTS:FOO_CORE>)
@@ -23,7 +56,9 @@ if(${ArrayFire_OpenCL_FOUND})
         ${OpenCL_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 ENDIF()
 
+# ArrayFire CUDA backend
 if(${ArrayFire_CUDA_FOUND})
+    # We need to find CUDA and NVVM as transitive linking is disabled on some OSes
     FIND_PACKAGE(CUDA REQUIRED)
     FIND_PACKAGE(NVVM REQUIRED)
     MESSAGE(STATUS ${CUDA_TOOLKIT_ROOT_DIR})
