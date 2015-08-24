@@ -95,9 +95,10 @@ int main(int argc, char* argv[])
         printf("arrayfire result = %d\n", sum_af);
 
         // Copy device array to host and get a pointer
-        int *h_input = input.host<int>();
+        std::vector<int> h_input(input.elements());
+        input.host(&h_input.front());
         // Do reduction using CPU
-        int sum_cpu = reduction_cpu(h_input);
+        int sum_cpu = reduction_cpu(&h_input.front());
         printf("cpu result       = %d\n", sum_cpu);
 
         // Get device pointer. No copy
@@ -105,8 +106,6 @@ int main(int argc, char* argv[])
         // Do reduction on CUDA
         int sum_cuda = reduction_cuda(d_input);
         printf("cuda result      = %d\n", sum_cuda);
-
-        delete[] h_input;
     }
     catch (af::exception& e) {
         fprintf(stderr, "%s\n", e.what());
