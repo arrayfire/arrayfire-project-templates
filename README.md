@@ -25,7 +25,7 @@ make
 ```
 
 NOTE: If you have installed ArrayFire to a non-standard location, you will
-need to specify the full pat to the `share/ArrayFire/cmake` directory. For
+need to specify the full path to the `share/ArrayFire/cmake` directory. For
 example, if you have installed ArrayFire to `/opt`, then the `cmake` command
 above will be replaced with:
 
