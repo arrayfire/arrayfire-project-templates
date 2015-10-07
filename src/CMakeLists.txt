@@ -47,9 +47,9 @@ if(${ArrayFire_CPU_FOUND})
 ENDIF()
 
 # ArrayFire OpenCL backend
-if(${ArrayFire_OpenCL_FOUND})
+FIND_PACKAGE(OpenCL)
+IF(${ArrayFire_OpenCL_FOUND} AND ${OpenCL_FOUND})
     # We need to find OpenCL as transitive linking is disabled on some OSes
-    FIND_PACKAGE(OpenCL REQUIRED)
     MESSAGE(STATUS "ArrayFire OpenCL backend found. Enabling OpenCL benchmark")
     ADD_EXECUTABLE(foo-opencl $<TARGET_OBJECTS:FOO_CORE>)
     TARGET_LINK_LIBRARIES(foo-opencl ${ArrayFire_OpenCL_LIBRARIES}
@@ -57,7 +57,8 @@ if(${ArrayFire_OpenCL_FOUND})
 ENDIF()
 
 # ArrayFire CUDA backend
-if(${ArrayFire_CUDA_FOUND})
+FIND_PACKAGE(CUDA)
+IF(${ArrayFire_CUDA_FOUND} AND ${CUDA_FOUND})
     # We need to find CUDA and NVVM as transitive linking is disabled on some OSes
     FIND_PACKAGE(CUDA REQUIRED)
     FIND_PACKAGE(NVVM REQUIRED)
