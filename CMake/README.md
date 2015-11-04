@@ -19,8 +19,8 @@ OpenCL backends if support for all three backends is present on your machine.
 To build this project simply:
 
 ```
-git clone https://github.com/bkloppenborg/arrayfire-cmake-example.git
-cd arrayfire-cmake-example/build
+git clone https://github.com/arrayfire/arrayfire-project-templates.git
+cd arrayfire-project-templates/CMake/build
 cmake ..
 make
 ```
