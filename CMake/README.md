@@ -15,6 +15,7 @@ OpenCL backends if support for all three backends is present on your machine.
 
 ## Building this project
 
+### Linux and OSX
 To build this project simply:
 
 ```
@@ -33,4 +34,28 @@ above will be replaced with:
 cmake -DArrayFire_DIR=/opt/share/ArrayFire/cmake ..
 ```
 
+### Windows
+Download the project and files into your working directory. For simplicity,
+lets assume the project is at `C:\workspace\arrayfire-cmake`.
 
+Open the CMake GUI.
+
+In the source directory field, enter the working directory
+`C:\workspace\arrayfire-cmake`. In the build directory field, enter the build
+directory `C:\workspace\arrayfire-cmake\build`.
+
+Click `Configure`.
+
+If there are no errors, click `Generate` in the CMake GUI.
+
+The ArrayFire installer creates files and registries that allow CMake to
+detect it automatically. When configure is clicked, ArrayFire along with it's
+dependencies are detected and the available backends are set to available.
+
+When not using the installer, the ArrayFire directory will have to be set
+using the `-DArrayFire_DIR` CMake variable.
+
+Now, the solution files will be created in the build directory. There will be
+different projects created for CPU, CUDA and OpenCL. Setting one of these
+projects as start project and then running it will run the example with the
+specified backend.
