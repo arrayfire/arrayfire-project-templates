@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "helloworld", "helloworld_vs2013.vcxproj", "{9AA8C867-BECF-4952-B2C5-D39EF89F7036}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|CPU_x64 = Debug|CPU_x64
+		Debug|CUDA_x64 = Debug|CUDA_x64
+		Debug|OpenCL_x64 = Debug|OpenCL_x64
+		Debug|Unified_x64 = Debug|Unified_x64
+		Release|CPU_x64 = Release|CPU_x64
+		Release|CUDA_x64 = Release|CUDA_x64
+		Release|OpenCL_x64 = Release|OpenCL_x64
+		Release|Unified_x64 = Release|Unified_x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Debug|CPU_x64.ActiveCfg = CPU_Debug|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Debug|CPU_x64.Build.0 = CPU_Debug|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Debug|CUDA_x64.ActiveCfg = CUDA_Debug|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Debug|CUDA_x64.Build.0 = CUDA_Debug|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Debug|OpenCL_x64.ActiveCfg = OpenCL_Debug|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Debug|OpenCL_x64.Build.0 = OpenCL_Debug|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Debug|Unified_x64.ActiveCfg = Unified_Debug|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Debug|Unified_x64.Build.0 = Unified_Debug|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Release|CPU_x64.ActiveCfg = CPU_Release|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Release|CPU_x64.Build.0 = CPU_Release|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Release|CUDA_x64.ActiveCfg = CUDA_Release|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Release|CUDA_x64.Build.0 = CUDA_Release|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Release|OpenCL_x64.ActiveCfg = OpenCL_Release|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Release|OpenCL_x64.Build.0 = OpenCL_Release|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Release|Unified_x64.ActiveCfg = Unified_Release|x64
+		{9AA8C867-BECF-4952-B2C5-D39EF89F7036}.Release|Unified_x64.Build.0 = Unified_Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
