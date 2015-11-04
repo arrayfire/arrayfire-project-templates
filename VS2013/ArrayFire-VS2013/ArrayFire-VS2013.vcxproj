@@ -41,8 +41,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AA8C867-BECF-4952-B2C5-D39EF89F7036}</ProjectGuid>
-    <RootNamespace>helloworld_vs2013</RootNamespace>
-    <ProjectName>helloworld</ProjectName>
+    <RootNamespace>ArrayFire-VS2013</RootNamespace>
+    <ProjectName>ArrayFire</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='CUDA_Debug|x64'" Label="Configuration">

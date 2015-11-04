@@ -12,7 +12,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{99D154EA-9D9F-469D-9B2B-2926A487D82E}</ProjectGuid>
-    <RootNamespace>ArrayFire_CUDA</RootNamespace>
+    <RootNamespace>ArrayFire-CUDA</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "helloworld", "helloworld_vs2013.vcxproj", "{9AA8C867-BECF-4952-B2C5-D39EF89F7036}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArrayFire", "ArrayFire-VS2013.vcxproj", "{9AA8C867-BECF-4952-B2C5-D39EF89F7036}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

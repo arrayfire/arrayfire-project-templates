@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArrayFire_CUDA", "ArrayFire_CUDA.vcxproj", "{99D154EA-9D9F-469D-9B2B-2926A487D82E}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ArrayFire-CUDA", "ArrayFire-CUDA.vcxproj", "{99D154EA-9D9F-469D-9B2B-2926A487D82E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
