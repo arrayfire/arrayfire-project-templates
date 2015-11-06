@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:ArrayFire-CPU/ArrayFire-CPU.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ArrayFire-CUDA/ArrayFire-CUDA.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ArrayFire-OpenCL/ArrayFire-OpenCL.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ArrayFire-Unified/ArrayFire-Unified.xcodeproj">
+   </FileRef>
+</Workspace>
