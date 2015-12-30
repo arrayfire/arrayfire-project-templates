@@ -36,7 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="helloworld.cpp">
-      <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CPU_Debug|x64'">NOMINMAX;ASSETS_DIR R"($(AF_PATH)/assets)";AF_CPU;AF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    <PreprocessorDefinitions Condition="'$(Configuration)|$(Platform)'=='CPU_Debug|x64'">NOMINMAX;ASSETS_DIR R"($(AF_PATH)/examples/assets)";AF_CPU;AF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -182,7 +182,30 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CUDA;AF_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/examples/assets)";AF_CUDA;AF_DEBUG</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
+      <ShowProgress>LinkVerboseLib</ShowProgress>
+      <AdditionalLibraryDirectories>$(AF_PATH)\lib;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>afcuda.lib;</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <PostBuildEvent>
+      <Command>echo copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"
+copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
+    </PostBuildEvent>
+    <PostBuildEvent>
+      <Message>Copy NVVM DLLs</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Unified_Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/examples/assets)";AF_CUDA;AF_DEBUG</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -204,29 +227,7 @@ copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CUDA;AF_DEBUG</PreprocessorDefinitions>
-    </ClCompile>
-    <Link>
-      <GenerateDebugInformation>true</GenerateDebugInformation>
-      <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
-      <ShowProgress>LinkVerboseLib</ShowProgress>
-      <AdditionalLibraryDirectories>$(AF_PATH)\lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>afcuda.lib;</AdditionalDependencies>
-    </Link>
-    <PostBuildEvent>
-      <Command>echo copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"
-copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
-    </PostBuildEvent>
-    <PostBuildEvent>
-      <Message>Copy NVVM DLLs</Message>
-    </PostBuildEvent>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Unified_Debug|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_UNIFIED;AF_DEBUG</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/examples/assets)";AF_UNIFIED;AF_DEBUG</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -234,21 +235,14 @@ copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
       <ShowProgress>LinkVerboseLib</ShowProgress>
       <AdditionalLibraryDirectories>$(AF_PATH)\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>af.lib;</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>echo copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"
-
-
 copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"
-
 if errorlevel 1 (
-
-
     echo "CUDA NVVM DLLs copy failed due to missing files."
-
-    exit /B
- 0
-
+    exit /B 0
 )</Command>
     </PostBuildEvent>
     <PostBuildEvent>
@@ -260,7 +254,7 @@ if errorlevel 1 (
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CPU;AF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/examples/assets)";AF_CPU;AF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -268,6 +262,7 @@ if errorlevel 1 (
       <ShowProgress>LinkVerboseLib</ShowProgress>
       <AdditionalLibraryDirectories>$(AF_PATH)\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>afcpu.lib;</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='OpenCL_Debug|x64'">
@@ -275,7 +270,7 @@ if errorlevel 1 (
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_OPENCL;AF_DEBUG;_MBCS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/examples/assets)";AF_OPENCL;AF_DEBUG;_MBCS</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -283,6 +278,7 @@ if errorlevel 1 (
       <ShowProgress>LinkVerboseLib</ShowProgress>
       <AdditionalLibraryDirectories>$(AF_PATH)\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>afopencl.lib;</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='CUDA_Release|x64'">
@@ -292,7 +288,7 @@ if errorlevel 1 (
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CUDA;AF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/examples/assets)";AF_CUDA;AF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -301,6 +297,7 @@ if errorlevel 1 (
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(AF_PATH)\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>afcuda.lib;</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>echo copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"
@@ -317,7 +314,7 @@ copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_UNIFIED;AF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/examples/assets)";AF_UNIFIED;AF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -326,16 +323,14 @@ copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(AF_PATH)\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>af.lib;</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
       <Command>echo copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"
-
 copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"
 if errorlevel 1 (
-
     echo "CUDA NVVM DLLs copy failed due to missing files."
-    exit /B
- 0
+    exit /B 0
 )</Command>
     </PostBuildEvent>
     <PostBuildEvent>
@@ -349,7 +344,7 @@ if errorlevel 1 (
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CPU;AF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/examples/assets)";AF_CPU;AF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -358,6 +353,7 @@ if errorlevel 1 (
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(AF_PATH)\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>afcpu.lib;</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='OpenCL_Release|x64'">
@@ -367,7 +363,7 @@ if errorlevel 1 (
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <AdditionalIncludeDirectories>$(AF_PATH)\include;</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_OPENCL;AF_RELEASE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/examples/assets)";AF_OPENCL;AF_RELEASE;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -376,6 +372,7 @@ if errorlevel 1 (
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>$(AF_PATH)\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>afopencl.lib;</AdditionalDependencies>
+      <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
