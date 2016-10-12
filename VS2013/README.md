@@ -15,8 +15,8 @@ on native CUDA or OpenCL code, this project will allow maximum portability.
 ## ArrayFire-CUDA
 This project uses an NVCC project which allows for native CUDA code.
 
-By default this project links with CUDA 7.0. To use other toolkits, go to
-`Project -> Build Customizations`. Uncheck CUDA 7.0 and select the alternative
+By default this project links with CUDA 8.0. To use other toolkits, go to
+`Project -> Build Customizations`. Uncheck CUDA 8.0 and select the alternative
 CUDA toolkit you wish to use.
 
 This project allows you to choose `Release` or `Debug` from the Solution
