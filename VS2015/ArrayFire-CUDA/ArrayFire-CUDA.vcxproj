@@ -71,7 +71,7 @@ copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
-      <Include>$(AF_PATH)\include;</Include>
+      <Include>$(AF_PATH)\include\;</Include>
       <Defines>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CUDA;AF_DEBUG</Defines>
       <CodeGeneration>compute_30,sm_30;compute_35,sm_35;compute_37,sm_37;compute_50,sm_50;compute_52,sm_52;compute_60,sm_60;</CodeGeneration>
     </CudaCompile>
@@ -101,8 +101,8 @@ copy "$(CUDA_PATH)\nvvm\bin\nvvm64*.dll" "$(OutDir)"</Command>
     </PostBuildEvent>
     <CudaCompile>
       <TargetMachinePlatform>64</TargetMachinePlatform>
-      <Include>$(AF_PATH)\include;</Include>
-      <Defines>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CUDA;AF_DEBUG</Defines>
+      <Include>$(AF_PATH)\include\;</Include>
+      <Defines>NOMINMAX;ASSETS_DIR=R"($(AF_PATH)/assets)";AF_CUDA;</Defines>
       <CodeGeneration>compute_30,sm_30;compute_35,sm_35;compute_37,sm_37;compute_50,sm_50;compute_52,sm_52;compute_60,sm_60;</CodeGeneration>
     </CudaCompile>
   </ItemDefinitionGroup>
